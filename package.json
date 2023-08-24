@@ -1,6 +1,6 @@
 {
   "name": "@sigswtool/polymer",
-  "version": "3.5.1",
+  "version": "3.5.2-0",
   "description": "A custom optimized fork of Polymer based on original version 3.5.1",
   "main": "polymer-element.js",
   "module": "polymer-element.js",
