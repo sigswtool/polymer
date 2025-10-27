@@ -7,18 +7,24 @@ on:
   release:
     types: [created]
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version: 20
           registry-url: https://registry.npmjs.org/
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
       # We do not need to run npm build because the scripts are not bundled.
       # Externals are build during npm ci and that fits our needs for now.
       - run: npm ci
       - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.PUBLISH_PACKAGE_TOKEN_NPMJS}}
+      
