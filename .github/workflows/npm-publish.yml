@@ -33,7 +33,7 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "Dry run mode activated"
-            npm publish --dry-run
+            npm publish --dry-run --tag dry-run
           else
             echo "Publishing for release"
             npm publish
