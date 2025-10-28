@@ -36,6 +36,6 @@ jobs:
             npm publish --dry-run --tag dry-run
           else
             echo "Publishing for release"
-            npm publish
+            npm publish --tag latest
           fi
           
